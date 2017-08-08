@@ -98,9 +98,9 @@ var Request = (function () {
       var cb = arguments[1] === undefined ? function () {} : arguments[1];
 
       this.queryObj.limit = 1;
-      this.exec(function (err, res) {
-        if (Array.isArray(res.body.bundle)) res.body.bundle = res.body.bundle[0];
-        cb(err, res);
+      this.exec(function (err, body) {
+        if (Array.isArray(body.bundle)) body.bundle = body.bundle[0];
+        cb(err, body);
       });
     }
   }, {
