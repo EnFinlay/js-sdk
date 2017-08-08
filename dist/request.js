@@ -96,6 +96,11 @@ var Request = (function () {
     value: function findOne() {
       var query = arguments[0] === undefined ? {} : arguments[0];
       var cb = arguments[1] === undefined ? function () {} : arguments[1];
+      
+      if (typeof query === 'function') {
+        cb = query;
+        query = {};
+      }
 
       this.queryObj.limit = 1;
       this.exec(function (err, body) {
